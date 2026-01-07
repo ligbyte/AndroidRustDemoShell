@@ -1,5 +1,5 @@
 [package]
-name = "rustdemo"
+name = "modify_mac"
 version = "0.1.0"
 edition = "2021"
 

@@ -18,7 +18,7 @@ import cn.mrack.rust.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     static {
-        System.loadLibrary("rustdemo");
+        System.loadLibrary("modify_mac");
     }
 
     private ActivityMainBinding binding;

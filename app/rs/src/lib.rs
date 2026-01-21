@@ -66,14 +66,13 @@ pub extern "C" fn Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_modifyParam
     _: JClass,
     param: JString
 ) -> jint {
-// 将 JString 转换为 Rust 的 String
+
     let param_str: String = env
         .get_string(param)
         .expect("Couldn't get Rust string from Java string")
         .into();
 
-    // 打印日志
     info!("lime Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_modifyParams: param = {}", param_str);
 
-    0 // Rust 中 return 可省略，直接写值即可
+    0
 }

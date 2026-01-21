@@ -1,10 +1,10 @@
 /**
- * @author Mrack
+ * @author Lime
  * @date 2022/2/15
  */
 
 use jni::sys::{jint,jobjectArray, jstring, JavaVM, JNI_VERSION_1_6};
-use jni::objects::{JClass,JObject,JValue};
+use jni::objects::{JClass,JObject,JValue,JString};
 use jni::{JNIEnv};
 use libc::c_void;
 
@@ -29,12 +29,12 @@ unsafe fn JNI_OnLoad(jvm: JavaVM, _reserved: *mut c_void) -> jint {
 
 
 #[no_mangle]
-pub extern "C" fn Java_cn_mrack_rust_MainActivity_getAppSignature(
+pub extern "C" fn Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_getAppSignature(
     env: JNIEnv,
     _: JClass,
     context: JObject
 ) -> jint {
-    info!("Java_cn_mrack_rust_MainActivity_getAppSignature");
+    info!("Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_getAppSignature");
 
     let package_manager = env.call_method(*context, "getPackageManager", "()Landroid/content/pm/PackageManager;", &[]).unwrap().l().unwrap();
     
@@ -58,4 +58,22 @@ pub extern "C" fn Java_cn_mrack_rust_MainActivity_getAppSignature(
     let hash = env.call_method(signature, "hashCode", "()I", &[]).unwrap().i().unwrap();
 
     return hash;
+}
+
+#[no_mangle]
+pub extern "C" fn Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_modifyParams(
+    env: JNIEnv,
+    _: JClass,
+    param: JString
+) -> jint {
+// 将 JString 转换为 Rust 的 String
+    let param_str: String = env
+        .get_string(param)
+        .expect("Couldn't get Rust string from Java string")
+        .into();
+
+    // 打印日志
+    info!("lime Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_modifyParams: param = {}", param_str);
+
+    0 // Rust 中 return 可省略，直接写值即可
 }

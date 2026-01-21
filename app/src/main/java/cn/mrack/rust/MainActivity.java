@@ -7,19 +7,21 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+
+import com.windcloud.plugin.mac.utils.ModifyMacUtils;
 
 import cn.mrack.rust.databinding.ActivityMainBinding;
 
 /**
- * @author Mrack
+ * @author Lime
  * @date 2022/2/15
  */
 public class MainActivity extends AppCompatActivity {
 
-    static {
-        System.loadLibrary("modify_mac");
-    }
+
+    public static final String TAG = "MainActivity";
 
     private ActivityMainBinding binding;
 
@@ -32,9 +34,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         // Example of a call to a native method
         TextView tv = binding.sampleText;
-        tv.setText("signature hash:" + getAppSignature(getApplicationContext()));
+        tv.setText("signature hash:" + ModifyMacUtils.getAppSignature(getApplicationContext()));
+
+        String input = "lime123456789";
+
+        Log.d(TAG, "limemodifyParams: " + ModifyMacUtils.modifyParams("123456789"));
+
     }
 
-    public native int getAppSignature(Context content);
+
 
 }

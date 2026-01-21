@@ -74,7 +74,6 @@ pub extern "C" fn Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_modifyParam
 
     info!("lime Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_modifyParams: param = {}", param_str);
 
-    // 根据param的值执行不同的Rust方法
     match param_str.as_str() {
         "运行时间" => modify_runtime(),
         "品牌" => modify_brand(),
@@ -346,7 +345,7 @@ pub extern "C" fn Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_modifyParam
     }
 }
 
-// 各种modify方法的实现（目前为空实现，后续可补充实际逻辑）
+
 fn modify_runtime() -> jint { info!("Executing modify_runtime"); 0 }
 fn modify_brand() -> jint { info!("Executing modify_brand"); 0 }
 fn modify_model() -> jint { info!("Executing modify_model"); 0 }

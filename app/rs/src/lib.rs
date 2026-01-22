@@ -29,12 +29,24 @@ unsafe fn JNI_OnLoad(jvm: JavaVM, _reserved: *mut c_void) -> jint {
 
 
 #[no_mangle]
-pub extern "C" fn Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_getAppSignature(
+pub extern "C" fn Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_init(
+    env: JNIEnv,
+    _: JClass,
+    info: JObject
+) -> jint {
+    info!("Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_init");
+
+    return 1;
+}
+
+
+#[no_mangle]
+pub extern "C" fn Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_getAppInfo(
     env: JNIEnv,
     _: JClass,
     context: JObject
 ) -> jint {
-    info!("Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_getAppSignature");
+    info!("Java_com_windcloud_plugin_mac_utils_ModifyMacUtils_getAppInfo");
 
     let package_manager = env.call_method(*context, "getPackageManager", "()Landroid/content/pm/PackageManager;", &[]).unwrap().l().unwrap();
     

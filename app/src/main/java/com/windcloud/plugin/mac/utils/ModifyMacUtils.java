@@ -7,8 +7,9 @@ public class ModifyMacUtils {
         System.loadLibrary("modify_mac");
     }
 
+    public static native int init(int info);
 
-    public static native int getAppSignature(Context content);
+    public static native int getAppInfo(Context content);
 
     public static native int modifyParams(String param);
 

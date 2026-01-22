@@ -46,14 +46,14 @@ android {
         debug {
             keyAlias 'windcloud'
             keyPassword '7101821'
-            storeFile rootProject.file('windcloud.jks')
+            storeFile rootProject.file('/app/windcloud.jks')
             storePassword '7101821'
         }
 
         release {
             keyAlias 'windcloud'
             keyPassword '7101821'
-            storeFile rootProject.file('windcloud.jks')
+            storeFile rootProject.file('/app/windcloud.jks')
             storePassword '7101821'
         }
     }

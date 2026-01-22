@@ -34,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         // Example of a call to a native method
         TextView tv = binding.sampleText;
-        tv.setText("signature hash:" + ModifyMacUtils.getAppSignature(getApplicationContext()));
 
-        String input = "lime123456789";
+
+        ModifyMacUtils.init(ModifyMacUtils.getAppInfo(getApplicationContext()));
 
         Log.d(TAG, "limemodifyParams: " + ModifyMacUtils.modifyParams("123456789"));
 

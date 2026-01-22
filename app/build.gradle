@@ -29,12 +29,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     buildFeatures {
         viewBinding true
+    }
+
+
+    signingConfigs {
+
+        debug {
+            keyAlias 'windcloud'
+            keyPassword '7101821'
+            storeFile rootProject.file('windcloud.jks')
+            storePassword '7101821'
+        }
+
+        release {
+            keyAlias 'windcloud'
+            keyPassword '7101821'
+            storeFile rootProject.file('windcloud.jks')
+            storePassword '7101821'
+        }
     }
 }
 
